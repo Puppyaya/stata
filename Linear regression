@@ -1,0 +1,16 @@
+sum #变量整理
+summarize X，details
+reg 
+regress Y X1 X2#拟合回归
+by group，sort: regress Y x1 x2
+constraint def1 #定义第一个约束条件
+cnsreg #带约束回归
+predict Yhat
+predict resid_Y, residuals
+asdoc+语句 #Myfile.doc
+list Y Yhat resid_y in 1/10 #预测
+corr Y X #相关系数(<0.8)
+gra Y X1 X2,matrix #散点图矩阵
+scatter
+ssc install estout
+ esttab using 实证结果.rtf, replace b(%12.3f) se(%12.3f) nogap compress s(N r2 r2_a)star(* 0.1 ** 0.05 *** 0.01) #实证结果导出
